@@ -1,0 +1,204 @@
+{
+  "accounts": {
+    "101": {
+      "name": "Cash",
+      "balance": -85.0
+    },
+    "401": {
+      "name": "Costs",
+      "balance": 45.0
+    },
+    "402": {
+      "name": "Handles",
+      "balance": 90.0
+    },
+    "131": {
+      "name": "Bank",
+      "balance": -50.0
+    }
+  },
+  "journal": [
+    {
+      "id": 1,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0001",
+      "doc_ref": "1",
+      "posting_date": "2026-01-01",
+      "document_date": "2026-01-01",
+      "counterparty": "1",
+      "payment_method": "CASH",
+      "due_date": "2026-01-01",
+      "description": "1",
+      "status": "VOID",
+      "postings": [
+        {
+          "account": "101",
+          "amount": -15.0,
+          "descritpion": "d"
+        },
+        {
+          "account": "401",
+          "amount": 15.0,
+          "descritpion": ""
+        }
+      ],
+      "void_reason": "ggg",
+      "void_date": "2026-01-27"
+    },
+    {
+      "id": 2,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0002",
+      "doc_ref": "1",
+      "posting_date": "2026-01-22",
+      "document_date": "2026-01-17",
+      "counterparty": "1",
+      "payment_method": "CASH",
+      "due_date": "2026-01-17",
+      "description": "1",
+      "status": "REVERSED",
+      "postings": [
+        {
+          "account": "101",
+          "amount": -20.0,
+          "descritpion": "1"
+        },
+        {
+          "account": "401",
+          "amount": 10.0,
+          "descritpion": "2"
+        },
+        {
+          "account": "402",
+          "amount": 10.0,
+          "descritpion": "f"
+        }
+      ],
+      "reversed_by": 3
+    },
+    {
+      "id": 3,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0003",
+      "status": "POSTED",
+      "reversal_of": 2,
+      "posting_date": "2026-01-27",
+      "document_date": "2026-01-27",
+      "counterparty": "1",
+      "due_date": "2026-01-27",
+      "description": "REVERSAL OF PK/2026/0002 - fff",
+      "postings": [
+        {
+          "account": "101",
+          "amount": 20.0,
+          "description": "REVERSAL: "
+        },
+        {
+          "account": "401",
+          "amount": -10.0,
+          "description": "REVERSAL: "
+        },
+        {
+          "account": "402",
+          "amount": -10.0,
+          "description": "REVERSAL: "
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "doc_type": "PK",
+      "doc_number": "PK/2021/0001",
+      "doc_ref": "1",
+      "posting_date": "2021-01-10",
+      "document_date": "2021-01-10",
+      "counterparty": "1",
+      "payment_method": "CASH",
+      "due_date": "2021-01-10",
+      "description": "1",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "101",
+          "amount": -20.0,
+          "descritpion": "d"
+        },
+        {
+          "account": "402",
+          "amount": 10.0,
+          "descritpion": "e"
+        },
+        {
+          "account": "401",
+          "amount": 10.0,
+          "descritpion": "f"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "doc_type": "PK",
+      "doc_number": "PK/2021/0002",
+      "doc_ref": "1",
+      "posting_date": "2021-01-22",
+      "document_date": "2021-01-22",
+      "counterparty": "1",
+      "payment_method": "CASH",
+      "due_date": "2021-01-22",
+      "description": "1",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "101",
+          "amount": -50.0,
+          "descritpion": "1"
+        },
+        {
+          "account": "401",
+          "amount": 10.0,
+          "descritpion": "2"
+        },
+        {
+          "account": "402",
+          "amount": 20.0,
+          "descritpion": "d"
+        },
+        {
+          "account": "401",
+          "amount": 10.0,
+          "descritpion": "12"
+        },
+        {
+          "account": "402",
+          "amount": 10.0,
+          "descritpion": "ff"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "doc_type": "PK",
+      "doc_number": "PK/2021/0003",
+      "doc_ref": "",
+      "posting_date": "2021-01-12",
+      "document_date": "2021-01-12",
+      "counterparty": "1",
+      "payment_method": "CARD",
+      "due_date": "2026-01-22",
+      "description": "1",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "131",
+          "amount": -50.0,
+          "descritpion": "1"
+        },
+        {
+          "account": "402",
+          "amount": 50.0,
+          "descritpion": ""
+        }
+      ]
+    }
+  ]
+}
