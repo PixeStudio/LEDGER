@@ -38,8 +38,7 @@ def add_account(data, code, name):
         return
 
     data["accounts"][code] = {
-        "name": name,
-        "balance": 0.00
+        "name": name
     }
 
     save_data(data)
@@ -47,6 +46,7 @@ def add_account(data, code, name):
 
 
 def show_accounts(data):
+    balances = calculate_balances(data)
     print("\nCHART OF ACCOUNTS")
     print("-" * 50)
 
@@ -55,7 +55,7 @@ def show_accounts(data):
         return
 
     for code, account in sorted(data["accounts"].items()):
-        balance = account["balance"]
+        balance = balances.get(code, 0.0)
         side = "DR" if balance >= 0 else "CR"
         amount = abs(balance)
         print(f"{code:<6} {account['name']:<30} {amount:10.2f} {side}")
@@ -92,6 +92,33 @@ def parse_date(date_str):
 # DECRETATION CORE
 # =========================
 
+def calculate_balances(data):
+    balances = {}
+
+    for entry in data["journal"]:
+        if entry.get("status", "POSTED") != "POSTED":
+            continue
+
+        for p in entry["postings"]:
+            acc = p["account"]
+            amount = p["amount"]
+            
+            balances[acc] = balances.get(acc, 0.0) + amount
+    return balances
+
+def compare_balances(data):
+    calculated = calculate_balances(data)
+
+    print("\nBALANCE CHECK (stored vs calculated)")
+    print("-" * 50)
+
+    for code, acc in data["accounts"].items():
+        stored = acc.get("balance", 0.0)
+        calc = calculated.get(code, 0.0)
+
+        status = "OK" if abs(stored - calc) < 0.0001 else "DIFF"
+        print(f"{code: <6} stored={stored:10.2f} calc={calc:10.2f} [{status}]")
+
 def is_balanced(postings):
     total = 0.0
     for p in postings:
@@ -118,7 +145,6 @@ def post_entry(data, entry):
             print(f"ERROR: Account does not exist: {code}")
             return
 
-        data["accounts"][code]["balance"] += amount
 
     data["journal"].append(entry)
     save_data(data)
@@ -186,6 +212,85 @@ def reverse_document(data, doc_id, reason):
             print(f"Document {entry['doc_number']} reversed.")
         print("ERROR: Document not found")
 
+def trial_balance(data):
+    balances = calculate_balances(data)
+
+    total_dr = 0.0
+    total_cr = 0.0
+
+    print("\nTRIAL BALANCE")
+    print("-" * 60)
+    print(f"{'Account':<6} {'Debit':>12} {'Credit':>12}")
+    print("-" * 60)
+
+    for code in sorted(balances):
+        amount = balances[code]
+
+        if amount > 0:
+            dr = amount
+            cr = 0.0
+        elif amount < 0:
+            dr = 0.0
+            cr = -amount
+        else:
+            continue
+
+        total_dr += dr
+        total_cr += cr
+
+        print(f"{code:<6} {dr:12.2f} {cr:12.2f}")
+
+    print("-" * 60)
+    print(f"{'TOTAL':<6} {total_dr:12.2f} {total_cr:12.2f}")
+
+    if abs(total_dr - total_cr) < 0.0001:
+        print("STATUS: BALANCED ✔")
+    else:
+        print("STATUS: NOT BALANCED ❌")
+
+def format_account_line(code, acc):
+    name = acc.get("name", "")
+    nature = acc.get("nature", "")
+    acc_type = acc.get("type", "")
+    group = acc.get("group", "")
+
+    # Short formats
+    group_short = group
+    if len(group_short) > 28:
+        group_short = group_short[:28] + "..."
+
+    return f"{code:<8} {name:<28} {nature:<10} {acc_type:<10} {group_short}"
+
+def suggest_accounts(data, prefix, limit=12):
+    prefix = prefix.strip()
+    if prefix == "":
+        return []
+    
+    matches = []
+    for code, acc in data["accounts"].items():
+        if code.startswith(prefix):
+            matches.append((code, acc))
+
+    matches.sort(key=lambda x: x[0])
+    return matches[:limit]
+
+def print_account_suggestions(data, prefix, limit=12):
+    matches = suggest_accounts(data, prefix, limit=limit)
+
+    if not matches:
+        print("No matching accounts.")
+        return
+    
+    print("\nMatching accounts:")
+    print("-" * 80)
+    print(f"{'Code':<8} {'Name':<28} {'Nature':<10} {'Type':<10} {'Group'}")
+    print("-" * 80)
+
+    for code, acc in matches:
+        print(format_account_line(code, acc))
+
+    print("-" * 80)
+    print("Tip: type full code (e.g. 101) to select, ENTER to finish.\n")
 
 # =========================
 # MENU
@@ -198,6 +303,8 @@ def main_menu():
     print("3. Add document")
     print("4. Void document")
     print("5. Reverse document")
+    print("6. Trial balance")
+    print("9. Check balances (diagnostic)")
     print("0. Exit")
 
 
@@ -288,28 +395,44 @@ def run_app(data):
             doc_ref = input("Source document number (optional): ").strip()
             description = input("Description: ").strip()
 
-            # Postings
+            # Postings (with account suggestions)
             postings = []
             while True:
-                account = input("Account code (or ENTER to finish): ").strip()
-                if account == "":
+                raw = input("Account code (ENTER to finish, ? for help): ").strip()
+
+                if raw == "":
                     break
 
-                if account not in data["accounts"]:
-                    print("Account does not exist.")
+                if raw == "?":
+                    print("You can type a prefix to see suggestions (e.g. 1, 20, 401).")
+                    print("Then type the full account code to select it.")
                     continue
 
+                # full account code selected
+                if raw in data["accounts"]:
+                    account = raw
+                else:
+                    # treat input as prefix and show suggestions
+                    print_account_suggestions(data, raw, limit=12)
+                    continue
+
+                # Amount
                 try:
                     raw_amount = input("Amount (+ DR / - CR): ").strip()
                     raw_amount = raw_amount.replace(",", ".")
                     amount = float(raw_amount)
                 except ValueError:
-                    print("Invalid amount.")
+                    print("Invalid amount. Use e.g. 10.00 or -10.00")
                     continue
 
-                line_desc = input("Line descritpion: ").strip()
+                # Line description
+                line_desc = input("Line description: ").strip()
 
-                postings.append({"account": account, "amount": amount, "descritpion": line_desc})
+                postings.append({
+                    "account": account,
+                    "amount": amount,
+                    "description": line_desc
+                })
 
             # Build entry ONCE (after postings)
             posting_iso = posting_date.isoformat()
@@ -345,6 +468,13 @@ def run_app(data):
                 print("Invalid ID.")
                 continue
             reason = input("Reason for reverse: ").strip()
+            reverse_document(data, doc_id, reason)
+
+        elif choice == "6":
+            trial_balance(data)
+
+        elif choice == "9":
+            compare_balances(data)
 
         elif choice == "0":
             print("Goodbye.")
@@ -353,7 +483,7 @@ def run_app(data):
         else:
             print("Invalid option.")
 
-        reverse_document(data, doc_id, reason)
+        
 
 
 # =========================
@@ -367,3 +497,6 @@ if ledger_state(data) == "EMPTY":
     print("NO RECORDS FROM PREVIOUS PERIOD FOUND")
 
 run_app(data)
+
+
+

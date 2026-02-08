@@ -1,0 +1,903 @@
+{
+  "accounts": [
+    {
+      "code": "010",
+      "name": "Środki trwałe",
+      "type": "balance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "020",
+      "name": "Wartości niematerialne i prawne",
+      "type": "balance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "030",
+      "name": "Długoterminowe aktywa finansowe",
+      "type": "balance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "040",
+      "name": "Nieruchomości inwestycyjne i prawa",
+      "type": "balance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "070",
+      "name": "Umorzenie środków trwałych",
+      "type": "corrective",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "075",
+      "name": "Umorzenie wartości niematerialnych i prawnych",
+      "type": "corrective",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "077",
+      "name": "Odpisy aktualizujące nieruchomości inwestycyjne i prawa",
+      "type": "corrective",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "078",
+      "name": "Odpisy aktualizujące środki trwałe oraz wartości niematerialne i prawne",
+      "type": "corrective",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "079",
+      "name": "Odpisy aktualizujące wartość długoterminowych aktywów finansowych",
+      "type": "corrective",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "080",
+      "name": "Środki trwałe w budowie",
+      "type": "balance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "091",
+      "name": "Środki trwałe w likwidacji",
+      "type": "offbalance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "092",
+      "name": "Środki trwałe dzierżawione",
+      "type": "offbalance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "093",
+      "name": "Środki trwałe obce",
+      "type": "offbalance",
+      "group": "Zespół 0 – Aktywa trwałe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "100",
+      "name": "Kasa",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "130",
+      "name": "Rachunek bieżący",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "135",
+      "name": "Inne środki pieniężne",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "138",
+      "name": "Kredyty bankowe długoterminowe",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "139",
+      "name": "Kredyty bankowe krótkoterminowe",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "140",
+      "name": "Krótkoterminowe aktywa finansowe",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "141",
+      "name": "Odpisy aktualizujące wartość krótkoterminowych aktywów finansowych",
+      "type": "corrective",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "144",
+      "name": "Weksle obce",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "145",
+      "name": "Środki pieniężne w drodze",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "149",
+      "name": "Rachunek środków funduszy specjalnych",
+      "type": "balance",
+      "group": "Zespół 1 – Środki pieniężne, rachunki bankowe oraz krótkoterminowe aktywa finansowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "200",
+      "name": "Rozrachunki z odbiorcami",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "201",
+      "name": "Rozrachunki z dostawcami",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "214",
+      "name": "Zobowiązania wekslowe",
+      "type": "balance",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "220",
+      "name": "Rozrachunki publicznoprawne",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "220-1",
+      "name": "Rozrachunki z ZUS",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "220-2",
+      "name": "Rozrachunki z US",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "221",
+      "name": "Rozrachunki z tytułu podatku VAT",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "221-1",
+      "name": "Rozliczenie należnego VAT",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "221-2",
+      "name": "Rozliczenie naliczonego VAT",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "asset",
+      "analytics": []
+    }
+
+        {
+      "code": "223",
+      "name": "Podatek VAT do rozliczenia",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "225",
+      "name": "Inne rozrachunki publicznoprawne",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "230",
+      "name": "Rozrachunki z tytułu wynagrodzeń",
+      "type": "balance",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "231",
+      "name": "Należności z tytułu niedoborów i szkód",
+      "type": "balance",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "234",
+      "name": "Pozostałe rozrachunki z pracownikami",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "240",
+      "name": "Pozostałe rozrachunki",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "242",
+      "name": "Rozliczenie niedoborów i szkód",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "243",
+      "name": "Rozliczenie nadwyżek",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "244",
+      "name": "Należności dochodzone na drodze sądowej",
+      "type": "balance",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "250",
+      "name": "Należne wpłaty na poczet kapitału",
+      "type": "settlement",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "290",
+      "name": "Odpisy aktualizujące rozrachunki",
+      "type": "corrective",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "291",
+      "name": "Zobowiązania warunkowe",
+      "type": "offbalance",
+      "group": "Zespół 2 – Rozrachunki i roszczenia",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "300",
+      "name": "Rozliczenie zakupu aktywów trwałych",
+      "type": "settlement",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "301",
+      "name": "Rozliczenie zakupów materiałów",
+      "type": "settlement",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "302",
+      "name": "Rozliczenie zakupu usług",
+      "type": "settlement",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "303",
+      "name": "Rozliczenie zakupu towarów",
+      "type": "settlement",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "310",
+      "name": "Materiały",
+      "type": "balance",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "330",
+      "name": "Towary w hurcie",
+      "type": "balance",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "335",
+      "name": "Towary w detalu",
+      "type": "balance",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "341",
+      "name": "Odchylenia od cen ewidencyjnych materiałów",
+      "type": "corrective",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "342",
+      "name": "Odchylenia od cen ewidencyjnych towarów w hurcie",
+      "type": "corrective",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "343",
+      "name": "Odchylenia od cen ewidencyjnych towarów z tytułu marży w detalu",
+      "type": "corrective",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "344",
+      "name": "Odchylenia od cen ewidencyjnych towarów z tytułu VAT w detalu",
+      "type": "corrective",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "345",
+      "name": "Odchylenia aktualizujące wartości zapasów materiałów i towarów",
+      "type": "corrective",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "390",
+      "name": "Zapasy obce",
+      "type": "offbalance",
+      "group": "Zespół 3 – Materiały i towary",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "400",
+      "name": "Amortyzacja",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "401",
+      "name": "Zużycie materiałów i energii",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "402",
+      "name": "Usługi obce",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "403",
+      "name": "Podatki i opłaty",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "404",
+      "name": "Wynagrodzenia",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "405",
+      "name": "Ubezpieczenia społeczne i inne świadczenia",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "406",
+      "name": "Podróże służbowe",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "409",
+      "name": "Pozostałe koszty",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "490",
+      "name": "Rozliczenie kosztów",
+      "type": "result",
+      "group": "Zespół 4 – Koszty według rodzajów i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "500",
+      "name": "Koszty działalności podstawowej",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "520",
+      "name": "Koszty wydziałowe",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "522",
+      "name": "Koszty zakupu",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "527",
+      "name": "Koszty sprzedaży",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "528",
+      "name": "Koszty handlowe",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "530",
+      "name": "Koszty działalności pomocniczej",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "550",
+      "name": "Koszty zarządu",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "580",
+      "name": "Rozliczenie kosztów działalności",
+      "type": "result",
+      "group": "Zespół 5 – Koszty według typów działalności i ich rozliczenie",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "601",
+      "name": "Wyroby gotowe",
+      "type": "balance",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "602",
+      "name": "Półfabrykaty",
+      "type": "balance",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "603",
+      "name": "Produkcja niezakończona",
+      "type": "balance",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "621",
+      "name": "Odchylenia od cen ewidencyjnych wyrobów gotowych",
+      "type": "corrective",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "622",
+      "name": "Odchylenia od cen ewidencyjnych półfabrykatów",
+      "type": "corrective",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "623",
+      "name": "Odchylenia aktualizujące wartości wyrobów gotowych",
+      "type": "corrective",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "corrective",
+      "analytics": []
+    },
+    {
+      "code": "640",
+      "name": "Rozliczenia międzyokresowe kosztów zakupu czynne",
+      "type": "balance",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "641",
+      "name": "Rozliczenia międzyokresowe kosztów czynne",
+      "type": "balance",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "642",
+      "name": "Rozliczenia międzyokresowe kosztów bierne",
+      "type": "balance",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "650",
+      "name": "Aktywa z tytułu odroczonego podatku dochodowego",
+      "type": "balance",
+      "group": "Zespół 6 – Produkty i rozliczenia międzyokresowe",
+      "nature": "asset",
+      "analytics": []
+    }
+    ,
+    {
+      "code": "701",
+      "name": "Przychody netto ze sprzedaży wyrobów gotowych",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "income",
+      "analytics": []
+    },
+    {
+      "code": "702",
+      "name": "Przychody netto ze sprzedaży usług",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "income",
+      "analytics": []
+    },
+    {
+      "code": "711",
+      "name": "Koszty sprzedanych wyrobów gotowych",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "712",
+      "name": "Koszty sprzedanych usług",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "730",
+      "name": "Przychody netto ze sprzedanych towarów",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "income",
+      "analytics": []
+    },
+    {
+      "code": "731",
+      "name": "Wartość sprzedanych towarów w cenie zakupu/nabycia",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "740",
+      "name": "Przychody netto ze sprzedanych materiałów",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "income",
+      "analytics": []
+    },
+    {
+      "code": "741",
+      "name": "Wartość sprzedanych materiałów w cenie zakupu/nabycia",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "750",
+      "name": "Przychody finansowe",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "income",
+      "analytics": []
+    },
+    {
+      "code": "751",
+      "name": "Koszty finansowe",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "760",
+      "name": "Pozostałe przychody operacyjne",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "income",
+      "analytics": []
+    },
+    {
+      "code": "761",
+      "name": "Pozostałe koszty operacyjne",
+      "type": "result",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "790",
+      "name": "Obroty wewnętrzne",
+      "type": "offbalance",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "791",
+      "name": "Koszty obrotów wewnętrznych",
+      "type": "offbalance",
+      "group": "Zespół 7 – Przychody i koszty związane z ich osiąganiem",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "801",
+      "name": "Kapitał akcyjny (udziałowy, właściciela)/ Fundusz założycielski (udziałowy)",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "802",
+      "name": "Kapitał zapasowy / Fundusz przedsiębiorstwa (zasobowy)",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "803",
+      "name": "Kapitał rezerwowy",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "804",
+      "name": "Kapitał/Fundusz z aktualizacji wyceny",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "820",
+      "name": "Rozliczenie wyniku finansowego",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "830",
+      "name": "Rezerwa z tytułu odroczonego podatku dochodowego",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "840",
+      "name": "Rezerwy",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "845",
+      "name": "Rozliczenia międzyokresowe przychodów",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "851",
+      "name": "Zakładowy fundusz świadczeń socjalnych",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "852",
+      "name": "Inne fundusze specjalne",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "860",
+      "name": "Wynik finansowy",
+      "type": "balance",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "870",
+      "name": "Podatek dochodowy",
+      "type": "result",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "expense",
+      "analytics": []
+    },
+    {
+      "code": "871",
+      "name": "Inne obowiązkowe obciążenia wyniku finansowego",
+      "type": "result",
+      "group": "Zespół 8 – Kapitały własne, rezerwy i wynik finansowy",
+      "nature": "expense",
+      "analytics": []
+    }
+  ],
+  "metadata": {
+    "version": "2025.1",
+    "source": "jak-ksiegowac.pl / konta.odt",
+    "language": "pl",
+    "created_at": "2025-11-01",
+    "supports_relations": true,
+    "hash": "placeholder-for-sha256"
+  }
+}
+

@@ -1,811 +1,903 @@
 {
-  "accounts": {
-    "010": {
+  "accounts": [
+    {
+      "code": "010",
       "name": "Fixed Assets",
       "type": "balance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "020": {
+    {
+      "code": "020",
       "name": "Intangible Assets",
       "type": "balance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "030": {
+    {
+      "code": "030",
       "name": "Long-term Financial Assets",
       "type": "balance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "040": {
+    {
+      "code": "040",
       "name": "Investment Properties and Rights",
       "type": "balance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "070": {
+    {
+      "code": "070",
       "name": "Depreciation of Fixed Assets",
       "type": "corrective",
       "group": "Group 0 – Fixed Assets",
       "nature": "corrective",
       "analytics": []
     },
-    "075": {
+    {
+      "code": "075",
       "name": "Depreciation of Intangible Assets",
       "type": "corrective",
       "group": "Group 0 – Fixed Assets",
       "nature": "corrective",
       "analytics": []
     },
-    "077": {
+    {
+      "code": "077",
       "name": "Impairment of Investment Properties and Rights",
       "type": "corrective",
       "group": "Group 0 – Fixed Assets",
       "nature": "corrective",
       "analytics": []
     },
-    "078": {
+    {
+      "code": "078",
       "name": "Impairment of Fixed and Intangible Assets",
       "type": "corrective",
       "group": "Group 0 – Fixed Assets",
       "nature": "corrective",
       "analytics": []
     },
-    "079": {
+    {
+      "code": "079",
       "name": "Impairment of Long-term Financial Assets",
       "type": "corrective",
       "group": "Group 0 – Fixed Assets",
       "nature": "corrective",
       "analytics": []
     },
-    "080": {
+    {
+      "code": "080",
       "name": "Assets under Construction",
       "type": "balance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "091": {
+    {
+      "code": "091",
       "name": "Assets in Liquidation",
       "type": "offbalance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "092": {
+    {
+      "code": "092",
       "name": "Leased Assets",
       "type": "offbalance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "093": {
+    {
+      "code": "093",
       "name": "External Fixed Assets",
       "type": "offbalance",
       "group": "Group 0 – Fixed Assets",
       "nature": "asset",
       "analytics": []
     },
-    "100": {
+    {
+      "code": "100",
       "name": "Cash on Hand",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "asset",
       "analytics": []
     },
-    "130": {
+    {
+      "code": "130",
       "name": "Current Bank Account",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "asset",
       "analytics": []
     },
-    "135": {
+    {
+      "code": "135",
       "name": "Other Cash Funds",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "asset",
       "analytics": []
     },
-    "138": {
+    {
+      "code": "138",
       "name": "Long-term Bank Loans",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "liability",
       "analytics": []
     },
-    "139": {
+    {
+      "code": "139",
       "name": "Short-term Bank Loans",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "liability",
       "analytics": []
     },
-    "140": {
+    {
+      "code": "140",
       "name": "Short-term Financial Assets",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "asset",
       "analytics": []
     },
-    "141": {
+    {
+      "code": "141",
       "name": "Impairment of Short-term Financial Assets",
       "type": "corrective",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "corrective",
       "analytics": []
     },
-    "144": {
+    {
+      "code": "144",
       "name": "Bills of Exchange (Receivable)",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "asset",
       "analytics": []
     },
-    "145": {
+    {
+      "code": "145",
       "name": "Cash in Transit",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "asset",
       "analytics": []
     },
-    "149": {
+    {
+      "code": "149",
       "name": "Special Funds Bank Account",
       "type": "balance",
       "group": "Group 1 – Cash, Bank Accounts and Short-term Financial Assets",
       "nature": "asset",
       "analytics": []
     },
-    "200": {
+    {
+      "code": "200",
       "name": "Receivables from Customers",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "asset",
       "analytics": []
     },
-    "201": {
+    {
+      "code": "201",
       "name": "Liabilities to Suppliers",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "liability",
       "analytics": []
     },
-    "214": {
+    {
+      "code": "214",
       "name": "Bills Payable",
       "type": "balance",
       "group": "Group 2 – Receivables and Claims",
       "nature": "liability",
       "analytics": []
     },
-    "220": {
+    {
+      "code": "220",
       "name": "Public-law Settlements",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "221": {
+    {
+      "code": "220-1",
+      "name": "Settlements with Social Security (ZUS)",
+      "type": "settlement",
+      "group": "Group 2 – Receivables and Claims",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "220-2",
+      "name": "Settlements with Tax Office (US)",
+      "type": "settlement",
+      "group": "Group 2 – Receivables and Claims",
+      "nature": "mixed",
+      "analytics": []
+    },
+    {
+      "code": "221",
       "name": "VAT Settlements",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "223": {
+    {
+      "code": "221-1",
+      "name": "Output VAT (Payable)",
+      "type": "settlement",
+      "group": "Group 2 – Receivables and Claims",
+      "nature": "liability",
+      "analytics": []
+    },
+    {
+      "code": "221-2",
+      "name": "Input VAT (Receivable)",
+      "type": "settlement",
+      "group": "Group 2 – Receivables and Claims",
+      "nature": "asset",
+      "analytics": []
+    },
+    {
+      "code": "223",
       "name": "VAT to be Settled",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "225": {
+    {
+      "code": "225",
       "name": "Other Public-law Settlements",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "230": {
+    {
+      "code": "230",
       "name": "Payroll Liabilities",
       "type": "balance",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "231": {
+    {
+      "code": "231",
       "name": "Receivables from Shortages and Damages",
       "type": "balance",
       "group": "Group 2 – Receivables and Claims",
       "nature": "asset",
       "analytics": []
     },
-    "234": {
+    {
+      "code": "234",
       "name": "Other Employee Settlements",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "240": {
+    {
+      "code": "240",
       "name": "Other Settlements",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "242": {
+    {
+      "code": "242",
       "name": "Settlement of Shortages and Damages",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "243": {
+    {
+      "code": "243",
       "name": "Settlement of Surpluses",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "244": {
+    {
+      "code": "244",
       "name": "Receivables under Litigation",
       "type": "balance",
       "group": "Group 2 – Receivables and Claims",
       "nature": "asset",
       "analytics": []
     },
-    "250": {
+    {
+      "code": "250",
       "name": "Receivables for Capital Contributions",
       "type": "settlement",
       "group": "Group 2 – Receivables and Claims",
       "nature": "mixed",
       "analytics": []
     },
-    "290": {
+    {
+      "code": "290",
       "name": "Impairment of Receivables",
       "type": "corrective",
       "group": "Group 2 – Receivables and Claims",
       "nature": "corrective",
       "analytics": []
     },
-    "291": {
+    {
+      "code": "291",
       "name": "Contingent Liabilities",
       "type": "offbalance",
       "group": "Group 2 – Receivables and Claims",
       "nature": "liability",
       "analytics": []
     },
-    "300": {
+    {
+      "code": "300",
       "name": "Acquisition of Fixed Assets Settlement",
       "type": "settlement",
       "group": "Group 3 – Materials and Goods",
       "nature": "mixed",
       "analytics": []
     },
-    "301": {
+    {
+      "code": "301",
       "name": "Materials Purchase Settlement",
       "type": "settlement",
       "group": "Group 3 – Materials and Goods",
       "nature": "mixed",
       "analytics": []
     },
-    "302": {
+    {
+      "code": "302",
       "name": "Services Purchase Settlement",
       "type": "settlement",
       "group": "Group 3 – Materials and Goods",
       "nature": "mixed",
       "analytics": []
     },
-    "303": {
+    {
+      "code": "303",
       "name": "Goods Purchase Settlement",
       "type": "settlement",
       "group": "Group 3 – Materials and Goods",
       "nature": "mixed",
       "analytics": []
     },
-    "310": {
+    {
+      "code": "310",
       "name": "Materials",
       "type": "balance",
       "group": "Group 3 – Materials and Goods",
       "nature": "asset",
       "analytics": []
     },
-    "330": {
+    {
+      "code": "330",
       "name": "Wholesale Goods",
       "type": "balance",
       "group": "Group 3 – Materials and Goods",
       "nature": "asset",
       "analytics": []
     },
-    "335": {
+    {
+      "code": "335",
       "name": "Retail Goods",
       "type": "balance",
       "group": "Group 3 – Materials and Goods",
       "nature": "asset",
       "analytics": []
     },
-    "341": {
+    {
+      "code": "341",
       "name": "Deviations from Valuation of Materials",
       "type": "corrective",
       "group": "Group 3 – Materials and Goods",
       "nature": "corrective",
       "analytics": []
     },
-    "342": {
+    {
+      "code": "342",
       "name": "Deviations from Valuation of Wholesale Goods",
       "type": "corrective",
       "group": "Group 3 – Materials and Goods",
       "nature": "corrective",
       "analytics": []
     },
-    "343": {
+    {
+      "code": "343",
       "name": "Deviations from Valuation of Retail Goods – Margin",
       "type": "corrective",
       "group": "Group 3 – Materials and Goods",
       "nature": "corrective",
       "analytics": []
     },
-    "344": {
+    {
+      "code": "344",
       "name": "Deviations from Valuation of Retail Goods – VAT",
       "type": "corrective",
       "group": "Group 3 – Materials and Goods",
       "nature": "corrective",
       "analytics": []
     },
-    "345": {
+    {
+      "code": "345",
       "name": "Impairment Adjustments of Inventories",
       "type": "corrective",
       "group": "Group 3 – Materials and Goods",
       "nature": "corrective",
       "analytics": []
     },
-    "390": {
+    {
+      "code": "390",
       "name": "Third-party Inventories",
       "type": "offbalance",
       "group": "Group 3 – Materials and Goods",
       "nature": "asset",
       "analytics": []
     },
-    "400": {
+    {
+      "code": "400",
       "name": "Depreciation and Amortization",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "401": {
+    {
+      "code": "401",
       "name": "Consumption of Materials and Energy",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "402": {
+    {
+      "code": "402",
       "name": "External Services",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "403": {
+    {
+      "code": "403",
       "name": "Taxes and Fees",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "404": {
+    {
+      "code": "404",
       "name": "Salaries and Wages",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "405": {
+    {
+      "code": "405",
       "name": "Social Insurance and Other Benefits",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "406": {
+    {
+      "code": "406",
       "name": "Business Travel",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "409": {
+    {
+      "code": "409",
       "name": "Other Costs",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "490": {
+    {
+      "code": "490",
       "name": "Cost Allocation",
       "type": "result",
       "group": "Group 4 – Costs by Nature and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "500": {
+    {
+      "code": "500",
       "name": "Main Operating Costs",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "520": {
+    {
+      "code": "520",
       "name": "Departmental Costs",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "522": {
+    {
+      "code": "522",
       "name": "Purchase Costs",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "527": {
+    {
+      "code": "527",
       "name": "Selling Costs",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "528": {
+    {
+      "code": "528",
       "name": "Trading Costs",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "530": {
+    {
+      "code": "530",
       "name": "Auxiliary Activities Costs",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "550": {
+    {
+      "code": "550",
       "name": "Administrative Costs",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "580": {
+    {
+      "code": "580",
       "name": "Operating Cost Allocation",
       "type": "result",
       "group": "Group 5 – Costs by Type of Activity and Allocation",
       "nature": "expense",
       "analytics": []
     },
-    "601": {
+    {
+      "code": "601",
       "name": "Finished Goods",
       "type": "balance",
       "group": "Group 6 – Products and Prepayments",
       "nature": "asset",
       "analytics": []
     },
-    "602": {
+    {
+      "code": "602",
       "name": "Semi-finished Products",
       "type": "balance",
       "group": "Group 6 – Products and Prepayments",
       "nature": "asset",
       "analytics": []
     },
-    "603": {
+    {
+      "code": "603",
       "name": "Work in Progress",
       "type": "balance",
       "group": "Group 6 – Products and Prepayments",
       "nature": "asset",
       "analytics": []
     },
-    "621": {
+    {
+      "code": "621",
       "name": "Valuation Deviations of Finished Goods",
       "type": "corrective",
       "group": "Group 6 – Products and Prepayments",
       "nature": "corrective",
       "analytics": []
     },
-    "622": {
+    {
+      "code": "622",
       "name": "Valuation Deviations of Semi-finished Goods",
       "type": "corrective",
       "group": "Group 6 – Products and Prepayments",
       "nature": "corrective",
       "analytics": []
     },
-    "623": {
+    {
+      "code": "623",
       "name": "Impairment Adjustments of Finished Goods",
       "type": "corrective",
       "group": "Group 6 – Products and Prepayments",
       "nature": "corrective",
       "analytics": []
     },
-    "640": {
+    {
+      "code": "640",
       "name": "Prepaid Purchase Costs (Active)",
       "type": "balance",
       "group": "Group 6 – Products and Prepayments",
       "nature": "mixed",
       "analytics": []
     },
-    "641": {
+    {
+      "code": "641",
       "name": "Prepaid Costs (Active)",
       "type": "balance",
       "group": "Group 6 – Products and Prepayments",
       "nature": "mixed",
       "analytics": []
     },
-    "642": {
+    {
+      "code": "642",
       "name": "Accrued Costs (Passive)",
       "type": "balance",
       "group": "Group 6 – Products and Prepayments",
       "nature": "mixed",
       "analytics": []
     },
-    "650": {
+    {
+      "code": "650",
       "name": "Deferred Tax Assets",
       "type": "balance",
       "group": "Group 6 – Products and Prepayments",
       "nature": "asset",
       "analytics": []
     },
-    "701": {
+    {
+      "code": "701",
       "name": "Net Revenue from Sale of Finished Goods",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "income",
       "analytics": []
     },
-    "702": {
+    {
+      "code": "702",
       "name": "Net Revenue from Sale of Services",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "income",
       "analytics": []
     },
-    "711": {
+    {
+      "code": "711",
       "name": "Cost of Sold Finished Goods",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "expense",
       "analytics": []
     },
-    "712": {
+    {
+      "code": "712",
       "name": "Cost of Sold Services",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "expense",
       "analytics": []
     },
-    "730": {
+    {
+      "code": "730",
       "name": "Net Revenue from Sale of Goods",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "income",
       "analytics": []
     },
-    "731": {
+    {
+      "code": "731",
       "name": "Cost of Goods Sold (at Purchase Price)",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "expense",
       "analytics": []
     },
-    "740": {
+    {
+      "code": "740",
       "name": "Net Revenue from Sale of Materials",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "income",
       "analytics": []
     },
-    "741": {
+    {
+      "code": "741",
       "name": "Cost of Materials Sold (at Purchase Price)",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "expense",
       "analytics": []
     },
-    "750": {
+    {
+      "code": "750",
       "name": "Financial Income",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "income",
       "analytics": []
     },
-    "751": {
+    {
+      "code": "751",
       "name": "Financial Costs",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "expense",
       "analytics": []
     },
-    "760": {
+    {
+      "code": "760",
       "name": "Other Operating Income",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "income",
       "analytics": []
     },
-    "761": {
+    {
+      "code": "761",
       "name": "Other Operating Costs",
       "type": "result",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "expense",
       "analytics": []
     },
-    "790": {
+    {
+      "code": "790",
       "name": "Internal Turnovers",
       "type": "offbalance",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "mixed",
       "analytics": []
     },
-    "791": {
+    {
+      "code": "791",
       "name": "Costs of Internal Turnovers",
       "type": "offbalance",
       "group": "Group 7 – Revenues and Related Costs",
       "nature": "mixed",
       "analytics": []
     },
-    "801": {
+    {
+      "code": "801",
       "name": "Share Capital / Founding Fund",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "802": {
+    {
+      "code": "802",
       "name": "Reserve / Surplus Capital",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "803": {
+    {
+      "code": "803",
       "name": "Revaluation Capital",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "804": {
+    {
+      "code": "804",
       "name": "Capital from Revaluation Adjustments",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "820": {
+    {
+      "code": "820",
       "name": "Financial Result Settlement",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "830": {
+    {
+      "code": "830",
       "name": "Deferred Tax Liability",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "840": {
+    {
+      "code": "840",
       "name": "Reserves",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "845": {
+    {
+      "code": "845",
       "name": "Deferred Income",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "851": {
+    {
+      "code": "851",
       "name": "Company Social Benefits Fund",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "852": {
+    {
+      "code": "852",
       "name": "Other Special Funds",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "860": {
+    {
+      "code": "860",
       "name": "Net Financial Result",
       "type": "balance",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "liability",
       "analytics": []
     },
-    "870": {
+    {
+      "code": "870",
       "name": "Income Tax",
       "type": "result",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "expense",
       "analytics": []
     },
-    "871": {
+    {
+      "code": "871",
       "name": "Other Mandatory Charges on Financial Result",
       "type": "result",
       "group": "Group 8 – Equity, Reserves and Financial Result",
       "nature": "expense",
       "analytics": []
-    },
-    "900": {
-      "name": "fdfd"
-    },
-    "198": {
-      "name": "ddd"
     }
-  },
-  "journal": [
-    {
-      "id": 1,
-      "doc_type": "PK",
-      "doc_number": "PK/2026/0001",
-      "doc_ref": "1",
-      "posting_date": "2026-01-21",
-      "document_date": "2026-01-21",
-      "counterparty": "d",
-      "payment_method": "CASH",
-      "due_date": "2026-01-21",
-      "description": "1",
-      "status": "POSTED",
-      "postings": [
-        {
-          "account": "100",
-          "amount": -50.0,
-          "description": "s"
-        },
-        {
-          "account": "402",
-          "amount": 50.0,
-          "description": "d"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "doc_type": "PK",
-      "doc_number": "PK/2026/0002",
-      "doc_ref": "1",
-      "posting_date": "2026-01-31",
-      "document_date": "2026-01-31",
-      "counterparty": "1",
-      "payment_method": "CASH",
-      "due_date": "2026-01-31",
-      "description": "1",
-      "status": "POSTED",
-      "postings": [
-        {
-          "account": "100",
-          "amount": -72.5,
-          "description": ""
-        },
-        {
-          "account": "401",
-          "amount": 72.5,
-          "description": ""
-        }
-      ]
-    }
-  ]
+  ],
+  "metadata": {
+    "version": "2025.1",
+    "source": "jak-ksiegowac.pl / konta.odt (translated)",
+    "language": "en",
+    "created_at": "2025-11-01",
+    "supports_relations": true,
+    "hash": "placeholder-for-sha256"
+  }
 }
+
+
+
