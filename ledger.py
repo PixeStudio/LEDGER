@@ -1,7 +1,9 @@
 import json
 from datetime import datetime
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
 FILE = "ledger.json"
+EPS = 0.0001 # tolerance for float in parse_amount_to_float
 
 
 # =========================
@@ -87,7 +89,91 @@ def parse_date(date_str):
     except ValueError:
         return None
 
+def postings_total(postings):
+    total = 0.0
+    for p in postings:
+        total += p["amount"]
+    return total
 
+def print_postings(postings, start=1):
+    print("\nCURRENT POSTINGS")
+    print("-" * 60)
+
+    for i, p in enumerate(postings, start=1):
+        acc = p["account"]
+        amt = p["amount"]
+        desc = p.get("description", "")
+        print(f"{i:>2}. {acc:<6} {amt:>10.2f} {desc}")
+    print("-" * 60)
+    print(f"TOTAL: {postings_total(postings):.2f}\n")
+
+def fix_unbalanced_postings(data, postings):
+    while True:
+        total = postings_total(postings)
+
+        if abs(total) < EPS:
+            return True
+        
+        print_postings(postings)
+        print("ERROR: Entry is not balanced.")
+        print("Options:")
+        print("   e - edit line")
+        print("   d - delete line")
+        print("   a - add new line")
+        print("   q - cancel document")
+        
+        choice = input("Choose option: ").strip().lower()
+
+        if choice == "q":
+            print("Document canceled.")
+            return False
+        elif choice == "d":
+            idx = input("Line number to delete: ").strip()
+            if idx.isdigit():
+                i = int(idx)
+                if 1 <= i <= len(postings):
+                    postings.pop(i - 1)
+        elif choice == "e":
+            idx = input("Line number to edit: ").strip()
+            if not idx.isdigit():
+                continue
+
+            i = int(idx)
+            if not (1 <= i <= len(postings)):
+                continue
+
+            raw = input("New amount (+ DR / - CR): ").strip()
+            try:
+                postings[i-1]["amount"] = parse_amount_to_float(raw)
+            except ValueError:
+                print("Invalid amount")
+        elif choice == "a":
+            while True:
+                raw = input("Account code (ENTER to cancel): ").strip()
+                if raw == "":
+                    break
+                if raw in data["accounts"]:
+                    account = raw
+                else:
+                    print_account_suggestions(data, raw)
+                    continue
+
+                try: 
+                    raw_amount  = input("Amount (+ DR / - CR): ").strip()
+                    amount = parse_amount_to_float(raw_amount)
+                except ValueError:
+                    print("Invalid amount.")
+                    continue
+
+                desc = input("Line description: ").strip()
+
+                postings.append({
+                    "account": account,
+                    "amount": amount,
+                    "description": desc
+                })
+                break
+    
 # =========================
 # DECRETATION CORE
 # =========================
@@ -119,11 +205,22 @@ def compare_balances(data):
         status = "OK" if abs(stored - calc) < 0.0001 else "DIFF"
         print(f"{code: <6} stored={stored:10.2f} calc={calc:10.2f} [{status}]")
 
+def parse_amount_to_float(raw):
+    # Allowes to write f.e. 19.20 & round at 2 point after 0
+    s = raw.strip().replace(" ", "").replace(",",".")
+    if s == "":
+        raise ValueError("Empty amount")
+    try:
+        dec = Decimal(s).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+        return float(dec)
+    except InvalidOperation:
+        raise ValueError("Invalid amount")
+
 def is_balanced(postings):
     total = 0.0
     for p in postings:
         total += p["amount"]
-    return total == 0.0
+    return abs(total) < EPS
 
 
 def post_entry(data, entry):
@@ -133,9 +230,10 @@ def post_entry(data, entry):
         print("ERROR: No postings entered.")
         return
 
-    if not is_balanced(postings):
-        print("ERROR: Entry is not balanced.")
-        return
+    while not is_balanced(postings):
+        ok = fix_unbalanced_postings(data, postings)
+        if not ok:
+            return
 
     for p in postings:
         code = p["account"]
@@ -166,7 +264,7 @@ def void_document(data, doc_id, reason):
             save_data(data)
             print(f"Document {entry['doc_number']} voided.")
             return
-        print("ERROR: Document not found.")
+    print("ERROR: Document not found.")
 
 def reverse_document(data, doc_id, reason):
     for entry in data["journal"]:
@@ -184,7 +282,7 @@ def reverse_document(data, doc_id, reason):
                 reversed_postings.append({
                     "account": p["account"],
                     "amount": -p["amount"],
-                    "description": f"REVERSAL: {p.get('description', "")}"
+                    "description": f"REVERSAL: {p.get('description', '')}"
                 })
 
             new_entry = {
@@ -307,6 +405,11 @@ def main_menu():
     print("9. Check balances (diagnostic)")
     print("0. Exit")
 
+def input_q(prompt):
+    s = input(prompt)
+    if s.strip().lower() == "q":
+        return None
+    return s
 
 def run_app(data):
     while True:
@@ -417,10 +520,9 @@ def run_app(data):
                     continue
 
                 # Amount
+                raw_amount = input("Amount (+ DR / - CR): ").strip()
                 try:
-                    raw_amount = input("Amount (+ DR / - CR): ").strip()
-                    raw_amount = raw_amount.replace(",", ".")
-                    amount = float(raw_amount)
+                    amount = parse_amount_to_float(raw_amount)
                 except ValueError:
                     print("Invalid amount. Use e.g. 10.00 or -10.00")
                     continue
@@ -483,8 +585,6 @@ def run_app(data):
         else:
             print("Invalid option.")
 
-        
-
 
 # =========================
 # PROGRAM START
@@ -497,6 +597,3 @@ if ledger_state(data) == "EMPTY":
     print("NO RECORDS FROM PREVIOUS PERIOD FOUND")
 
 run_app(data)
-
-
-
