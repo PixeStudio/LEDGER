@@ -2,6 +2,9 @@ import json
 from datetime import datetime
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
+class CancelOperation(Exception):
+    pass
+
 FILE = "ledger.json"
 EPS = 0.0001 # tolerance for float in parse_amount_to_float
 
@@ -216,6 +219,54 @@ def parse_amount_to_float(raw):
     except InvalidOperation:
         raise ValueError("Invalid amount")
 
+def ensure_settings(data): 
+    changed = False
+    if "settings" not in data or not isinstance(data["settings"], dict):
+        data["settings"] = {}
+        changed = True
+    
+    if "open_year" not in data["settings"]:
+        data["settings"]["open_year"] = datetime.now().year
+        changed = True
+
+    if "open_month" not in data["settings"]:
+        data["settings"]["open_month"] = datetime.now().month
+        changed = True
+
+    if changed:
+        save_data(data)
+        print("Seetings initialized.")
+
+def input_date_from_open_period(data, label, default_date=None):
+    open_year = int(data["settings"]["open_year"])
+    open_month = int(data["settings"]["open_month"])
+    prefix = f"{open_year:04d}-{open_month:02d}-"
+
+    while True:
+        raw = input_or_cancel(
+            f"{label} (DD or YYYY-MM-DD) [{prefix}__]"
+            + (f" (ENTER={default_date.isoformat()})" if default_date else "")
+            + ": "
+        )
+
+        if raw == "" and default_date:
+            return default_date
+        
+        if len(raw) == 10 and raw[4] == "-" and raw[7] == "-":
+            d = parse_date(raw)
+            if d and d.year == open_year and d.month == open_month:
+                return d
+            print("Date must be within open period.")
+            continue
+
+        if raw.isdigit():
+            try:
+                return datetime(open_year, open_month, int(raw)).date()
+            except ValueError:
+                print("Invalid day.")
+                continue
+        print("Invalid date.")
+              
 def is_balanced(postings):
     total = 0.0
     for p in postings:
@@ -405,10 +456,10 @@ def main_menu():
     print("9. Check balances (diagnostic)")
     print("0. Exit")
 
-def input_q(prompt):
-    s = input(prompt)
-    if s.strip().lower() == "q":
-        return None
+def input_or_cancel(prompt):
+    s = input(prompt).strip()
+    if s.lower() == "q":
+        raise CancelOperation()
     return s
 
 def run_app(data):
@@ -430,130 +481,133 @@ def run_app(data):
             show_accounts(data)
 
         elif choice == "3":
-            print("\nADD PK DOCUMENT")
 
-            # Posting date (required)
-            while True:
-                posting_input = input("Posting date (YYYY-MM-DD): ").strip()
-                posting_date = parse_date(posting_input)
+            try:
+                print("\nADD PK DOCUMENT")
 
-                if posting_date is not None:
-                    break
-
-                print("Invalid date format. Use YYYY-MM-DD (e.g. 2026-01-22).")
-
-            # Document date (optional)
-            doc_input = input("Document date (YYYY-MM-DD) [ENTER = posting date]: ").strip()
-            if doc_input == "":
-                document_date = posting_date
-            else:
-                parsed = parse_date(doc_input)
-                if parsed is not None:
-                    document_date = parsed
-                else:
-                    print("Invalid document date. Using posting date.")
-                    document_date = posting_date
-
-            # Counterparty
-            counterparty = input("Counterparty: ").strip()
-
-            # Payment method
-            while True:
-                print("Payment method:")
-                print("1. Cash")
-                print("2. Card")
-                print("3. Bank transfer")
-                pm = input("Choose (1/2/3): ").strip()
-
-                if pm == "1":
-                    payment_method = "CASH"
-                    break
-                elif pm == "2":
-                    payment_method = "CARD"
-                    break
-                elif pm == "3":
-                    payment_method = "TRANSFER"
-                    break
-                else:
-                    print("Invalid option.")
-
-            # Due date
-            if payment_method == "CASH":
-                due_date = document_date
-            else:
+                # Posting date (required)
                 while True:
-                    due_input = input("Due date (YYYY-MM-DD) [ENTER = document date]: ").strip()
-                    if due_input == "":
-                        due_date = document_date
-                        break
+                    posting_date = input_date_from_open_period(data, "Posting date")
 
-                    parsed = parse_date(due_input)
-                    if parsed is not None:
-                        due_date = parsed
+                    if posting_date is not None:
                         break
 
                     print("Invalid date format. Use YYYY-MM-DD (e.g. 2026-01-22).")
 
-            # Source document number + description
-            doc_ref = input("Source document number (optional): ").strip()
-            description = input("Description: ").strip()
-
-            # Postings (with account suggestions)
-            postings = []
-            while True:
-                raw = input("Account code (ENTER to finish, ? for help): ").strip()
-
-                if raw == "":
-                    break
-
-                if raw == "?":
-                    print("You can type a prefix to see suggestions (e.g. 1, 20, 401).")
-                    print("Then type the full account code to select it.")
-                    continue
-
-                # full account code selected
-                if raw in data["accounts"]:
-                    account = raw
+                # Document date (optional)
+                doc_input = input("Document date (YYYY-MM-DD) [ENTER = posting date]: ").strip()
+                if doc_input == "":
+                    document_date = input_date_from_open_period(data, "Document date", default_date=posting_date)
                 else:
-                    # treat input as prefix and show suggestions
-                    print_account_suggestions(data, raw, limit=12)
-                    continue
+                    parsed = parse_date(doc_input)
+                    if parsed is not None:
+                        document_date = parsed
+                    else:
+                        print("Invalid document date. Using posting date.")
+                        document_date = posting_date
 
-                # Amount
-                raw_amount = input("Amount (+ DR / - CR): ").strip()
-                try:
-                    amount = parse_amount_to_float(raw_amount)
-                except ValueError:
-                    print("Invalid amount. Use e.g. 10.00 or -10.00")
-                    continue
+                # Counterparty
+                counterparty = input("Counterparty: ").strip()
 
-                # Line description
-                line_desc = input("Line description: ").strip()
+                # Payment method
+                while True:
+                    print("Payment method:")
+                    print("1. Cash")
+                    print("2. Card")
+                    print("3. Bank transfer")
+                    pm = input("Choose (1/2/3): ").strip()
 
-                postings.append({
-                    "account": account,
-                    "amount": amount,
-                    "description": line_desc
-                })
+                    if pm == "1":
+                        payment_method = "CASH"
+                        break
+                    elif pm == "2":
+                        payment_method = "CARD"
+                        break
+                    elif pm == "3":
+                        payment_method = "TRANSFER"
+                        break
+                    else:
+                        print("Invalid option.")
 
-            # Build entry ONCE (after postings)
-            posting_iso = posting_date.isoformat()
-            entry = {
-                "id": next_entry_id(data),
-                "doc_type": "PK",
-                "doc_number": next_doc_number(data, "PK", posting_iso),
-                "doc_ref": doc_ref,
-                "posting_date": posting_iso,
-                "document_date": document_date.isoformat(),
-                "counterparty": counterparty,
-                "payment_method": payment_method,
-                "due_date": due_date.isoformat(),
-                "description": description,
-                "status": "POSTED",
-                "postings": postings
-            }
+                # Due date
+                if payment_method == "CASH":
+                    due_date = input_date_from_open_period(data, "Due date", default_date=document_date)
+                else:
+                    while True:
+                        due_input = input("Due date (YYYY-MM-DD) [ENTER = document date]: ").strip()
+                        if due_input == "":
+                            due_date = document_date
+                            break
 
-            post_entry(data, entry)
+                        parsed = parse_date(due_input)
+                        if parsed is not None:
+                            due_date = parsed
+                            break
+
+                        print("Invalid date format. Use YYYY-MM-DD (e.g. 2026-01-22).")
+
+                # Source document number + description
+                doc_ref = input_or_cancel("Source document number (optional): ").strip()
+                description = input_or_cancel("Description: ").strip()
+
+                # Postings (with account suggestions)
+                postings = []
+                while True:
+                    raw = input_or_cancel("Account code (ENTER to finish, ? for help): ").strip()
+
+                    if raw == "":
+                        break
+
+                    if raw == "?":
+                        print("You can type a prefix to see suggestions (e.g. 1, 20, 401).")
+                        print("Then type the full account code to select it.")
+                        continue
+
+                    # full account code selected
+                    if raw in data["accounts"]:
+                        account = raw
+                    else:
+                        # treat input as prefix and show suggestions
+                        print_account_suggestions(data, raw, limit=12)
+                        continue
+
+                    # Amount
+                    raw_amount = input_or_cancel("Amount (+ DR / - CR): ").strip()
+                    try:
+                        amount = parse_amount_to_float(raw_amount)
+                    except ValueError:
+                        print("Invalid amount. Use e.g. 10.00 or -10.00")
+                        continue
+
+                    # Line description
+                    line_desc = input_or_cancel("Line description: ").strip()
+
+                    postings.append({
+                        "account": account,
+                        "amount": amount,
+                        "description": line_desc
+                    })
+
+                # Build entry ONCE (after postings)
+                posting_iso = posting_date.isoformat()
+                entry = {
+                    "id": next_entry_id(data),
+                    "doc_type": "PK",
+                    "doc_number": next_doc_number(data, "PK", posting_iso),
+                    "doc_ref": doc_ref,
+                    "posting_date": posting_iso,
+                    "document_date": document_date.isoformat(),
+                    "counterparty": counterparty,
+                    "payment_method": payment_method,
+                    "due_date": due_date.isoformat(),
+                    "description": description,
+                    "status": "POSTED",
+                    "postings": postings
+                }
+
+                post_entry(data, entry)
+            except CancelOperation:
+                print("Document entry canceled.")
 
         elif choice == "4":
             try:
@@ -591,6 +645,7 @@ def run_app(data):
 # =========================
 
 data = load_data()
+ensure_settings(data)
 
 if ledger_state(data) == "EMPTY":
     print("OPENING BALANCES ARE 0.00")
