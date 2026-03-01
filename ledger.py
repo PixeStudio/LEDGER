@@ -219,54 +219,109 @@ def parse_amount_to_float(raw):
     except InvalidOperation:
         raise ValueError("Invalid amount")
 
+def ym_from_year_month(y, m):
+    return f"{int(y):04d}-{int(m):02d}"
+
 def ensure_settings(data): 
     changed = False
+    
     if "settings" not in data or not isinstance(data["settings"], dict):
         data["settings"] = {}
         changed = True
     
-    if "open_year" not in data["settings"]:
-        data["settings"]["open_year"] = datetime.now().year
+    s = data["settings"]
+
+    if "current_period" not in s:
+        if "open_year" in s and "open_month" in s:
+            cp = ym_from_year_month(s["open_year"], s["open_month"])
+        else:
+            today = datetime.now().date()
+            cp = f"{today.year:04d}-{today.month:02d}"
+        s["current_period"] = cp
         changed = True
 
-    if "open_month" not in data["settings"]:
-        data["settings"]["open_month"] = datetime.now().month
+    if "periods" not in s or not isinstance(s["periods"], dict):
+        s["periods"] = {}
         changed = True
+    
+    if s["current_period"] not in s["periods"]:
+        s["periods"][s["current_period"]] = {"status": "OPEN"}
+        changed = True
+
+    if "open_year" in s:
+        del s["open_year"]; changed = True
+    if "open_month" in s:
+        del s["open_month"]; changed = True
 
     if changed:
         save_data(data)
-        print("Seetings initialized.")
 
-def input_date_from_open_period(data, label, default_date=None):
-    open_year = int(data["settings"]["open_year"])
-    open_month = int(data["settings"]["open_month"])
-    prefix = f"{open_year:04d}-{open_month:02d}-"
+def maybe_prompt_new_period(data):
+    s = data["settings"]
+    current = s["current_period"]
+
+    today = datetime.now().date()
+    today_period = f"{today.year:04d}-{today.month:02d}"
+
+    if today == current:
+        return
+    
+    print(f"\nDetected new month!")
+    print(f"Today: {today_period} | Current period: {current}")
+
+    ans = input("Create and switch to the new period? Y/N").strip().lower()
+    if ans != "y":
+        return
+    
+    ans2 = input(f"New period will be created: {today_period}. Confirm? Y/N").strip().lower()
+    if ans2 != "y":
+        return
+    
+    # Create if not exist:
+
+    s["periods"].setdefault(today_period, {"status": "OPEN"})
+    s["current_period"] = today_period
+
+    save_data(data)
+    print(f"Switched current period to: {today_period}")
+    
+
+def input_date_from_current_period(data, label, default_date=None):
+   s = data["settings"]
+   current = s["current_period"]
+   year = int(current.split("-")[0])
+   month = int(current.split("-")[1])
+   prefix = f"{year:04d}-{month:02d}-"
+
+   today = datetime.now().date()
+   if default_date is None:
+    if today.year == year and today.month == month:
+        default_date = today
+    else:
+        default_date = datetime(year, month, 1).date()
 
     while True:
         raw = input_or_cancel(
-            f"{label} (DD or YYYY-MM-DD) [{prefix}__]"
-            + (f" (ENTER={default_date.isoformat()})" if default_date else "")
-            + ": "
+            f"{label} (DD or YYYY-MM-DD) [{prefix}__] (ENTER={default_date.isoformat()}): "
         )
 
-        if raw == "" and default_date:
+        if raw =="":
             return default_date
-        
         if len(raw) == 10 and raw[4] == "-" and raw[7] == "-":
             d = parse_date(raw)
-            if d and d.year == open_year and d.month == open_month:
+            if d and d.year == year and d.month == month:
                 return d
-            print("Date must be within open period.")
+            print(f"Date must be within current period {current}")
             continue
-
         if raw.isdigit():
             try:
-                return datetime(open_year, open_month, int(raw)).date()
+                return datetime(year, month, int(raw)).date()
             except ValueError:
-                print("Invalid day.")
+                print("Invalid day for this month.")
                 continue
-        print("Invalid date.")
-              
+        print("Invalid input. Type day (e.g. 14) or full date (YYYY-MM-DD)")          
+
+
 def is_balanced(postings):
     total = 0.0
     for p in postings:
@@ -487,7 +542,7 @@ def run_app(data):
 
                 # Posting date (required)
                 while True:
-                    posting_date = input_date_from_open_period(data, "Posting date")
+                    posting_date = input_date_from_current_period(data, "Posting date")
 
                     if posting_date is not None:
                         break
@@ -497,7 +552,7 @@ def run_app(data):
                 # Document date (optional)
                 doc_input = input("Document date (YYYY-MM-DD) [ENTER = posting date]: ").strip()
                 if doc_input == "":
-                    document_date = input_date_from_open_period(data, "Document date", default_date=posting_date)
+                    document_date = input_date_from_current_period(data, "Document date", default_date=posting_date)
                 else:
                     parsed = parse_date(doc_input)
                     if parsed is not None:
@@ -531,10 +586,10 @@ def run_app(data):
 
                 # Due date
                 if payment_method == "CASH":
-                    due_date = input_date_from_open_period(data, "Due date", default_date=document_date)
+                    due_date = document_date
                 else:
                     while True:
-                        due_input = input("Due date (YYYY-MM-DD) [ENTER = document date]: ").strip()
+                        due_input = input_date_from_current_period(data, "Due date", default_date=document_date)
                         if due_input == "":
                             due_date = document_date
                             break
@@ -646,6 +701,7 @@ def run_app(data):
 
 data = load_data()
 ensure_settings(data)
+maybe_prompt_new_period(data)
 
 if ledger_state(data) == "EMPTY":
     print("OPENING BALANCES ARE 0.00")
