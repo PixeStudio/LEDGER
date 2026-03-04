@@ -3000,6 +3000,36 @@
           "description": "Food - outside"
         }
       ]
+    },
+    {
+      "id": 76,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0075",
+      "doc_ref": "ZK0303-01",
+      "posting_date": "2026-03-04",
+      "document_date": "2026-03-03",
+      "counterparty": "AUTOMAT",
+      "payment_method": "CASH",
+      "due_date": "2026-03-03",
+      "description": "Food & Drinks - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "100",
+          "amount": -3.5,
+          "description": "Food & Drinks - outside"
+        },
+        {
+          "account": "402",
+          "amount": 0.5,
+          "description": "Drinks"
+        },
+        {
+          "account": "402",
+          "amount": 3.0,
+          "description": "Food"
+        }
+      ]
     }
   ],
   "settings": {

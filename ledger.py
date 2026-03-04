@@ -1,5 +1,6 @@
 import json
-from datetime import datetime
+import traceback
+from datetime import datetime, date
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
 class CancelOperation(Exception):
@@ -86,10 +87,16 @@ def next_doc_number(data, doc_type, posting_date_iso):
     return f"{doc_type}/{year}/{seq:04d}"
 
 
-def parse_date(date_str):
+def parse_date(value):
+    if isinstance(value, date):
+        return value
+    
+    if not isinstance(value, str):
+        return None
+
     try:
-        return datetime.strptime(date_str, "%Y-%m-%d").date()
-    except ValueError:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    except (ValueError, TypeError):
         return None
 
 def postings_total(postings):
@@ -263,13 +270,13 @@ def maybe_prompt_new_period(data):
     today = datetime.now().date()
     today_period = f"{today.year:04d}-{today.month:02d}"
 
-    if today == current:
+    if today_period == current:
         return
     
     print(f"\nDetected new month!")
     print(f"Today: {today_period} | Current period: {current}")
 
-    ans = input("Create and switch to the new period? Y/N").strip().lower()
+    ans = input("Create and switch to the new period? Y/N ").strip().lower()
     if ans != "y":
         return
     
@@ -552,7 +559,7 @@ def run_app(data):
                 # Document date (optional)
                 doc_input = input("Document date (YYYY-MM-DD) [ENTER = posting date]: ").strip()
                 if doc_input == "":
-                    document_date = input_date_from_current_period(data, "Document date", default_date=posting_date)
+                    document_date = posting_date
                 else:
                     parsed = parse_date(doc_input)
                     if parsed is not None:
@@ -589,14 +596,13 @@ def run_app(data):
                     due_date = document_date
                 else:
                     while True:
-                        due_input = input_date_from_current_period(data, "Due date", default_date=document_date)
-                        if due_input == "":
-                            due_date = document_date
-                            break
+                        due_date = input_date_from_current_period(
+                            data,
+                            "Due date",
+                            default_date=document_date
+                        )
 
-                        parsed = parse_date(due_input)
-                        if parsed is not None:
-                            due_date = parsed
+                        if due_date is None:
                             break
 
                         print("Invalid date format. Use YYYY-MM-DD (e.g. 2026-01-22).")
@@ -707,4 +713,9 @@ if ledger_state(data) == "EMPTY":
     print("OPENING BALANCES ARE 0.00")
     print("NO RECORDS FROM PREVIOUS PERIOD FOUND")
 
-run_app(data)
+try:
+    run_app(data)
+except Exception as e:
+    print("\nCRITICAL ERROR:", e)
+    print("\nTRACEBACK:")
+    traceback.print_exc()
