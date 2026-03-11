@@ -105,17 +105,26 @@ def postings_total(postings):
         total += p["amount"]
     return total
 
-def print_postings(postings, start=1):
+def print_postings(postings):
     print("\nCURRENT POSTINGS")
+    print(f"{'No':>2}. {'Account':<6} {'Amount':>10}  Description")
     print("-" * 60)
 
     for i, p in enumerate(postings, start=1):
         acc = p["account"]
         amt = p["amount"]
         desc = p.get("description", "")
+
         print(f"{i:>2}. {acc:<6} {amt:>10.2f} {desc}")
+
+    total = postings_total(postings)
     print("-" * 60)
-    print(f"TOTAL: {postings_total(postings):.2f}\n")
+    print(f"TOTAL: {total:+.2f}\n")
+
+    if abs(total) < 0.0001:
+        print("DOCUMENT IS BALANCED ✓")
+    else:
+        print(f"Difference to balance: {-total:+2f}")
 
 def fix_unbalanced_postings(data, postings):
     while True:
@@ -152,14 +161,14 @@ def fix_unbalanced_postings(data, postings):
             if not (1 <= i <= len(postings)):
                 continue
 
-            raw = input("New amount (+ DR / - CR): ").strip()
+            raw = input_or_cancel("New amount (+ DR / - CR): ").strip()
             try:
                 postings[i-1]["amount"] = parse_amount_to_float(raw)
             except ValueError:
                 print("Invalid amount")
         elif choice == "a":
             while True:
-                raw = input("Account code (ENTER to cancel): ").strip()
+                raw = input_or_cancel("Account code (ENTER to cancel): ").strip()
                 if raw == "":
                     break
                 if raw in data["accounts"]:
@@ -169,24 +178,50 @@ def fix_unbalanced_postings(data, postings):
                     continue
 
                 try: 
-                    raw_amount  = input("Amount (+ DR / - CR): ").strip()
+                    raw_amount  = input_or_cancel("Amount (+ DR / - CR): ").strip()
                     amount = parse_amount_to_float(raw_amount)
                 except ValueError:
                     print("Invalid amount.")
                     continue
 
-                desc = input("Line description: ").strip()
+                desc = input_or_cancel("Line description: ").strip()
 
                 postings.append({
                     "account": account,
                     "amount": amount,
                     "description": desc
                 })
+
                 break
     
 # =========================
 # DECRETATION CORE
 # =========================
+
+def amount_calculator():
+    print("\nAMOUNT CALCULATOR")
+    print("Enteramounts one per line.")
+    print("Press ENTER on empty line to finish.\n")
+
+    total = 0.0
+
+    while True:
+        raw = input("value (ENTER=finish): ").strip()
+
+        if raw == "":
+            break
+
+        raw = raw.replace(",", ".")
+
+        try:
+            value = float(raw)
+        except ValueError:
+            print("Invalid number.")
+            continue
+        total += value
+        print(f"TOTAL = {total:.2f}")
+    print(f"TOTAL = {total:.2f}\n")
+    return total
 
 def calculate_balances(data):
     balances = {}
@@ -270,7 +305,7 @@ def maybe_prompt_new_period(data):
     today = datetime.now().date()
     today_period = f"{today.year:04d}-{today.month:02d}"
 
-    if today_period == current:
+    if today_period in s["periods"]:
         return
     
     print(f"\nDetected new month!")
@@ -306,8 +341,7 @@ def input_date_from_current_period(data, label, default_date=None):
         default_date = today
     else:
         default_date = datetime(year, month, 1).date()
-
-    while True:
+   while True:
         raw = input_or_cancel(
             f"{label} (DD or YYYY-MM-DD) [{prefix}__] (ENTER={default_date.isoformat()}): "
         )
@@ -328,6 +362,92 @@ def input_date_from_current_period(data, label, default_date=None):
                 continue
         print("Invalid input. Type day (e.g. 14) or full date (YYYY-MM-DD)")          
 
+def show_periods(data):
+    s = data["settings"]
+    periods = s.get("periods", {})
+    current = s.get("current_period")
+
+    print("\nACCOUNTIG PERIODS")
+    print("-" * 40)
+
+    if not periods:
+        print("No periods defined.")
+        return
+
+    for p in sorted(periods):
+        status = periods[p].get("status", "UNKNOWN")
+
+        if p == current:
+            marker = "<-- current"
+        else:
+            marker = ""
+
+        print(f"{p:<10} {status:<10} {marker}")
+    
+    print("-" * 40)    
+
+def switch_period(data):
+    s = data["settings"]
+    periods = s.get("periods", {})
+    current = s.get("current_period")
+
+    print("\nSWITCH ACCOUNTING PERIOD")
+    print(f"Current period: {current}")
+
+    new_period = input("Enter period (YYYY-MM) or ENTER to cancel. ")
+
+    if new_period == "":
+        print("Operation cancelled.")
+
+    if new_period not in periods:
+        print("Period does not exist.")
+        return
+    
+    if periods[new_period].get("status") == "CLOSED":
+        print("This period is closed and cannot be activated.")
+        return
+    
+    s["current_period"] = new_period
+    save_data(data)
+
+    print(f"Switched period: {new_period}")
+
+def close_period(data):
+
+    s = data["settings"]
+    periods = s.get("periods", {})
+    current = s.get("current_period")
+
+    print("\nCLOSE ACCOUNTING PERIOD")
+
+    p = input("Enter period to close (YYYY-MM) or ENTER to cancel: ").strip()
+
+    if p == "":
+        print("Operation cancelled.")
+        return
+    
+    if p not in periods:
+        print("Period does not exist.")
+        return
+    
+    if periods[p].get("status") == "CLOSED":
+        print("Period already closed.")
+        return
+    
+    if p == current:
+        print("Cannot close the current active period")
+        return
+    
+    confirm = input(f"Close period {p}? This operation cannot be undone. Y/N").strip().lower()
+    
+    if confirm != "y":
+        print("Operation cancelled.")
+        return
+    
+    periods[p]["status"] = "CLOSED"
+
+    save_data(data)
+    print(f"Period {p} is now CLOSED")
 
 def is_balanced(postings):
     total = 0.0
@@ -515,6 +635,7 @@ def main_menu():
     print("4. Void document")
     print("5. Reverse document")
     print("6. Trial balance")
+    print("7. Periods")
     print("9. Check balances (diagnostic)")
     print("0. Exit")
 
@@ -530,6 +651,7 @@ def run_app(data):
         choice = input("Choose an option: ").strip()
 
         if choice == "1":
+
             code = input("Account code: ").strip()
             name = input("Account name: ").strip()
 
@@ -546,6 +668,16 @@ def run_app(data):
 
             try:
                 print("\nADD PK DOCUMENT")
+                s = data["settings"]
+                current = s.get("current period")
+                periods = s.get("periods", {})
+
+                status = periods.get(current,{}).get("status")
+
+                if status == "CLOSED":
+                    print(f"\nERROR: Period{current} is CLOSED.")
+                    print("Posting new documents is not allowed.")
+                    return
 
                 # Posting date (required)
                 while True:
@@ -603,7 +735,9 @@ def run_app(data):
                         )
 
                         if due_date is None:
-                            break
+                            print("Operation cancelled.")
+                            return
+                        break
 
                         print("Invalid date format. Use YYYY-MM-DD (e.g. 2026-01-22).")
 
@@ -613,43 +747,77 @@ def run_app(data):
 
                 # Postings (with account suggestions)
                 postings = []
+                last_account = None
+                last_desc = None
+
                 while True:
-                    raw = input_or_cancel("Account code (ENTER to finish, ? for help): ").strip()
+                    raw = input_or_cancel("Account code (ENTER to finish, ? for help, '.' repeat last): ").strip()
 
                     if raw == "":
                         break
 
                     if raw == "?":
-                        print("You can type a prefix to see suggestions (e.g. 1, 20, 401).")
-                        print("Then type the full account code to select it.")
+                        print("Type account prefix to see suggestion.")
                         continue
 
-                    # full account code selected
-                    if raw in data["accounts"]:
+                    #repeat last account
+                    if raw == ".":
+                        if not last_account:
+                            print("No previous account to repeat.")
+                            continue    
+                    #full account code
+                    elif raw in data["accounts"]:
                         account = raw
+                    #treat as prefix
                     else:
-                        # treat input as prefix and show suggestions
                         print_account_suggestions(data, raw, limit=12)
                         continue
+                    
 
                     # Amount
-                    raw_amount = input_or_cancel("Amount (+ DR / - CR): ").strip()
-                    try:
-                        amount = parse_amount_to_float(raw_amount)
-                    except ValueError:
-                        print("Invalid amount. Use e.g. 10.00 or -10.00")
-                        continue
+                    raw_amount = input_or_cancel("Amount (+ DR / - CR) [type 'c' for calculator]: ").strip()
+                    
+                    if raw_amount.lower() == "c":
+                        amount = amount_calculator()
+                    else:
+                        try:
+                            amount = parse_amount_to_float(raw_amount)
+                        except ValueError:
+                            print("Invalid amount. Use e.g. 10.00 or -10.00")
+                            continue
 
                     # Line description
-                    line_desc = input_or_cancel("Line description: ").strip()
+                    while True:
+                        line_desc = input_or_cancel("Line description ('+' repeat last): ").strip()
 
-                    postings.append({
-                        "account": account,
-                        "amount": amount,
-                        "description": line_desc
-                    })
+                        if line_desc == "+":
+                            if last_desc is None:
+                                print("No previous description to repeat.")
+                                continue
+                            line_desc = last_desc
+
+                        postings.append({
+                            "account": account,
+                            "amount": amount,
+                            "description": line_desc
+                        })
+
+                        last_account = account
+                        last_desc = line_desc
+
+                        print_postings(postings)
+                        break
+
+                
+                    
+
+                    
 
                 # Build entry ONCE (after postings)
+                if due_date is None:
+                    print("ERROR: Due date not set!")
+                    return
+                
                 posting_iso = posting_date.isoformat()
                 entry = {
                     "id": next_entry_id(data),
@@ -689,6 +857,28 @@ def run_app(data):
 
         elif choice == "6":
             trial_balance(data)
+
+        elif choice == "7":
+
+            while True:
+                print("\nPERIODS")
+                print("1. Show period")
+                print("2. Switch period")
+                print("3. Close period")
+                print("0. Back")
+
+                p_choice = input("Choose option: ").strip()
+
+                if p_choice == "1":
+                    show_periods(data)
+                elif p_choice == "2":
+                    switch_period(data)
+                elif p_choice == "3":
+                    close_period(data)
+                elif p_choice == "0":
+                    break
+                else:
+                    print("Invalid input.")
 
         elif choice == "9":
             compare_balances(data)

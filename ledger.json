@@ -3030,6 +3030,796 @@
           "description": "Food"
         }
       ]
+    },
+    {
+      "id": 77,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0076",
+      "doc_ref": "1433",
+      "posting_date": "2026-03-04",
+      "document_date": "2026-02-28",
+      "counterparty": "MTB",
+      "payment_method": "CARD",
+      "due_date": "2026-02-28",
+      "description": "Fuel",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -62.91,
+          "description": "Fuel"
+        },
+        {
+          "account": "401",
+          "amount": 62.91,
+          "description": "Fuel(37,03l - 302589)"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0077",
+      "doc_ref": "6750",
+      "posting_date": "2026-03-04",
+      "document_date": "2026-03-02",
+      "counterparty": "EDEKA",
+      "payment_method": "CARD",
+      "due_date": "2026-03-02",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -8.29,
+          "description": "Purchases"
+        },
+        {
+          "account": "409",
+          "amount": -4.0,
+          "description": "Caution"
+        },
+        {
+          "account": "401",
+          "amount": 0.89,
+          "description": "Drinks"
+        },
+        {
+          "account": "401",
+          "amount": 2.49,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 8.91,
+          "description": "Alcohol"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0078",
+      "doc_ref": "4825",
+      "posting_date": "2026-03-04",
+      "document_date": "2026-02-27",
+      "counterparty": "NETTO",
+      "payment_method": "CARD",
+      "due_date": "2026-02-27",
+      "description": "Food",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -1.73,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 1.73,
+          "description": "Food"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0079",
+      "doc_ref": "488846",
+      "posting_date": "2026-03-04",
+      "document_date": "2026-02-27",
+      "counterparty": "HOLZINGER",
+      "payment_method": "CARD",
+      "due_date": "2026-02-27",
+      "description": "Food - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -2.48,
+          "description": "Food - outside"
+        },
+        {
+          "account": "402",
+          "amount": 2.48,
+          "description": "Food - outside"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0080",
+      "doc_ref": "488896",
+      "posting_date": "2026-03-04",
+      "document_date": "2026-02-28",
+      "counterparty": "HOLZINGER",
+      "payment_method": "CARD",
+      "due_date": "2026-02-28",
+      "description": "Food - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -9.56,
+          "description": "Food - outside"
+        },
+        {
+          "account": "402",
+          "amount": 9.56,
+          "description": "Food - outside"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0081",
+      "doc_ref": "ZK0304-01",
+      "posting_date": "2026-03-05",
+      "document_date": "2026-03-04",
+      "counterparty": "GEORG KOCHANEK",
+      "payment_method": "TRANSFER",
+      "due_date": "2026-03-04",
+      "description": "Administrative assistance",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "130",
+          "amount": -800.0,
+          "description": "Administrative assistance"
+        },
+        {
+          "account": "402",
+          "amount": 800.0,
+          "description": "Administrative assistance"
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0082",
+      "doc_ref": "489565",
+      "posting_date": "2026-03-05",
+      "document_date": "2026-03-03",
+      "counterparty": "HOLZINGER",
+      "payment_method": "CARD",
+      "due_date": "2026-03-03",
+      "description": "Food - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -16.74,
+          "description": "Food - outside"
+        },
+        {
+          "account": "402",
+          "amount": 12.77,
+          "description": "Food - outside"
+        },
+        {
+          "account": "401",
+          "amount": 3.97,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0083",
+      "doc_ref": "8455",
+      "posting_date": "2026-03-05",
+      "document_date": "2026-03-03",
+      "counterparty": "LIDL",
+      "payment_method": "CARD",
+      "due_date": "2026-03-03",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -10.94,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 6.99,
+          "description": "Household supplies"
+        },
+        {
+          "account": "409",
+          "amount": 3.95,
+          "description": "Food for cat"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0084",
+      "doc_ref": "489946",
+      "posting_date": "2026-03-05",
+      "document_date": "2026-03-04",
+      "counterparty": "HOLZINGER",
+      "payment_method": "CARD",
+      "due_date": "2026-03-04",
+      "description": "Food - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -16.6,
+          "description": "Food - outside"
+        },
+        {
+          "account": "402",
+          "amount": 14.03,
+          "description": "Food - outside"
+        },
+        {
+          "account": "401",
+          "amount": 2.57,
+          "description": "Food"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0085",
+      "doc_ref": "0246",
+      "posting_date": "2026-03-05",
+      "document_date": "2026-03-04",
+      "counterparty": "LIDL",
+      "payment_method": "CARD",
+      "due_date": "2026-03-04",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -6.67,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 1.81,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 0.29,
+          "description": "Drinks"
+        },
+        {
+          "account": "401",
+          "amount": 2.97,
+          "description": "Alcohol"
+        },
+        {
+          "account": "409",
+          "amount": 1.0,
+          "description": "Caution"
+        },
+        {
+          "account": "409",
+          "amount": 0.6,
+          "description": "Food for cat"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0086",
+      "doc_ref": "4756",
+      "posting_date": "2026-03-05",
+      "document_date": "2026-03-03",
+      "counterparty": "NETTO",
+      "payment_method": "CARD",
+      "due_date": "2026-03-03",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -11.33,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 7.92,
+          "description": "Alcohol"
+        },
+        {
+          "account": "401",
+          "amount": 0.29,
+          "description": "Drinks"
+        },
+        {
+          "account": "401",
+          "amount": 3.08,
+          "description": "Food"
+        },
+        {
+          "account": "409",
+          "amount": -2.25,
+          "description": "Caution"
+        },
+        {
+          "account": "409",
+          "amount": 2.29,
+          "description": "Food for cat"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0087",
+      "doc_ref": "ZK0306-01",
+      "posting_date": "2026-03-06",
+      "document_date": "2026-03-05",
+      "counterparty": "MICHAL KUNZ",
+      "payment_method": "CASH",
+      "due_date": "2026-03-05",
+      "description": "SCI8706K (BREAKS)",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "100",
+          "amount": -215.0,
+          "description": "SCI8706K (BREAKS)"
+        },
+        {
+          "account": "402",
+          "amount": 215.0,
+          "description": "SCI8706K (BREAKS)"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0088",
+      "doc_ref": "ZK0306-02",
+      "posting_date": "2026-03-06",
+      "document_date": "2026-03-05",
+      "counterparty": "AUTOMAT",
+      "payment_method": "CASH",
+      "due_date": "2026-03-05",
+      "description": "Drinks - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "402",
+          "amount": 0.5,
+          "description": "Drinks - outside"
+        },
+        {
+          "account": "100",
+          "amount": -0.5,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0089",
+      "doc_ref": "4962",
+      "posting_date": "2026-03-06",
+      "document_date": "2026-03-05",
+      "counterparty": "NETTO",
+      "payment_method": "CARD",
+      "due_date": "2026-03-05",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -21.43,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 5.94,
+          "description": "Alcohol"
+        },
+        {
+          "account": "409",
+          "amount": -0.25,
+          "description": "Caution"
+        },
+        {
+          "account": "409",
+          "amount": 2.6,
+          "description": "Food for cat"
+        },
+        {
+          "account": "401",
+          "amount": 0.58,
+          "description": "Drinks"
+        },
+        {
+          "account": "401",
+          "amount": 12.56,
+          "description": "Food"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0090",
+      "doc_ref": "ZK0307-01",
+      "posting_date": "2026-03-07",
+      "document_date": "2026-03-06",
+      "counterparty": "AUTOMAT",
+      "payment_method": "CASH",
+      "due_date": "2026-03-06",
+      "description": "Drinks - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "100",
+          "amount": -0.5,
+          "description": "Drinks - outside"
+        },
+        {
+          "account": "402",
+          "amount": 0.5,
+          "description": "Drinks - outside"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0091",
+      "doc_ref": "ZK0703-02",
+      "posting_date": "2026-03-07",
+      "document_date": "2026-03-07",
+      "counterparty": "JACEK FAJKIS",
+      "payment_method": "TRANSFER",
+      "due_date": "2026-03-07",
+      "description": "Food",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "130",
+          "amount": -30.0,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 30.0,
+          "description": "Food"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0092",
+      "doc_ref": "7222",
+      "posting_date": "2026-03-07",
+      "document_date": "2026-03-06",
+      "counterparty": "JET - STATION",
+      "payment_method": "CARD",
+      "due_date": "2026-03-06",
+      "description": "Food - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -7.97,
+          "description": "Food - outside"
+        },
+        {
+          "account": "402",
+          "amount": 7.97,
+          "description": "Food - outside"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0093",
+      "doc_ref": "3093",
+      "posting_date": "2026-03-07",
+      "document_date": "2026-03-07",
+      "counterparty": "LIDL",
+      "payment_method": "CARD",
+      "due_date": "2026-03-07",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -12.31,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 7.35,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 3.96,
+          "description": "Alcohol"
+        },
+        {
+          "account": "409",
+          "amount": 1.0,
+          "description": "Caution"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0094",
+      "doc_ref": "5182",
+      "posting_date": "2026-03-07",
+      "document_date": "2026-03-07",
+      "counterparty": "NETTO",
+      "payment_method": "CARD",
+      "due_date": "2026-03-07",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -16.82,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 6.93,
+          "description": "Alcohol"
+        },
+        {
+          "account": "401",
+          "amount": 7.36,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 0.58,
+          "description": "Drinks"
+        },
+        {
+          "account": "409",
+          "amount": 3.0,
+          "description": "Food for cat"
+        },
+        {
+          "account": "409",
+          "amount": -2.0,
+          "description": "Caution"
+        },
+        {
+          "account": "401",
+          "amount": 0.95,
+          "description": "Cleaning supplies"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0095",
+      "doc_ref": "6288",
+      "posting_date": "2026-03-07",
+      "document_date": "2026-03-07",
+      "counterparty": "NETTO",
+      "payment_method": "CARD",
+      "due_date": "2026-03-07",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -10.71,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 6.95,
+          "description": "Alcohol"
+        },
+        {
+          "account": "401",
+          "amount": 0.29,
+          "description": "Drinks"
+        },
+        {
+          "account": "401",
+          "amount": 1.22,
+          "description": "Food"
+        },
+        {
+          "account": "409",
+          "amount": 2.25,
+          "description": "Caution"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0096",
+      "doc_ref": "ZK0903-01",
+      "posting_date": "2026-03-09",
+      "document_date": "2026-03-09",
+      "counterparty": "HOLZINGER",
+      "payment_method": "CARD",
+      "due_date": "2026-03-09",
+      "description": "Food - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -4.22,
+          "description": "Food - outside"
+        },
+        {
+          "account": "402",
+          "amount": 4.22,
+          "description": "Food - outside"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0097",
+      "doc_ref": "9471",
+      "posting_date": "2026-03-09",
+      "document_date": "2026-03-09",
+      "counterparty": "NETTO",
+      "payment_method": "CARD",
+      "due_date": "2026-03-09",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -7.78,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 6.32,
+          "description": "Alcohol"
+        },
+        {
+          "account": "401",
+          "amount": 2.67,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 0.29,
+          "description": "Drinks"
+        },
+        {
+          "account": "409",
+          "amount": -1.5,
+          "description": "Caution"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0098",
+      "doc_ref": "3432",
+      "posting_date": "2026-03-11",
+      "document_date": "2026-03-09",
+      "counterparty": "NETTO",
+      "payment_method": "CARD",
+      "due_date": "2026-03-09",
+      "description": "Purchases",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -6.09,
+          "description": "Purchases"
+        },
+        {
+          "account": "401",
+          "amount": 2.97,
+          "description": "Food"
+        },
+        {
+          "account": "401",
+          "amount": 2.37,
+          "description": "Alcohol"
+        },
+        {
+          "account": "409",
+          "amount": 0.75,
+          "description": "Caution"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0099",
+      "doc_ref": "ZK1003-01",
+      "posting_date": "2026-03-11",
+      "document_date": "2026-03-10",
+      "counterparty": "HOLZINGER",
+      "payment_method": "CARD",
+      "due_date": "2026-03-10",
+      "description": "Food - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "135",
+          "amount": -8.9,
+          "description": "Food - outside"
+        },
+        {
+          "account": "402",
+          "amount": 8.9,
+          "description": "Food - outside"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "doc_type": "PK",
+      "doc_number": "PK/2026/0100",
+      "doc_ref": "ZK1103-01",
+      "posting_date": "2026-03-03",
+      "document_date": "2026-03-03",
+      "counterparty": "AUTOMAT",
+      "payment_method": "CASH",
+      "due_date": "2026-03-03",
+      "description": "Drinks - outside",
+      "status": "POSTED",
+      "postings": [
+        {
+          "account": "100",
+          "amount": -1.0,
+          "description": "Drinks - outside"
+        },
+        {
+          "account": "402",
+          "amount": 1.0,
+          "description": "Drinks - outside"
+        }
+      ]
     }
   ],
   "settings": {
