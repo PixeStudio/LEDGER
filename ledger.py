@@ -124,7 +124,7 @@ def print_postings(postings):
     if abs(total) < 0.0001:
         print("DOCUMENT IS BALANCED ✓")
     else:
-        print(f"Difference to balance: {-total:+2f}")
+        print(f"Difference to balance: {-total:+.2f}")
 
 def fix_unbalanced_postings(data, postings):
     while True:
@@ -139,13 +139,18 @@ def fix_unbalanced_postings(data, postings):
         print("   e - edit line")
         print("   d - delete line")
         print("   a - add new line")
-        print("   q - cancel document")
+        print("   q - quit editor")
+        print("   c - cancel document")
         
         choice = input("Choose option: ").strip().lower()
 
         if choice == "q":
-            print("Document canceled.")
-            return False
+            return True
+        elif choice == "c":
+            confirm = input("Cancel document? (y/n): ").strip().lower()
+            if confirm == "y":
+                return False
+            continue
         elif choice == "d":
             idx = input("Line number to delete: ").strip()
             if idx.isdigit():
@@ -751,13 +756,27 @@ def run_app(data):
                 last_desc = None
 
                 while True:
-                    raw = input_or_cancel("Account code (ENTER to finish, ? for help, '.' repeat last): ").strip()
+                    raw = input_or_cancel("Account code (ENTER to finish, ? for help, '.' repeat last or e - edit postings): ").strip()
 
                     if raw == "":
                         break
 
                     if raw == "?":
                         print("Type account prefix to see suggestion.")
+                        continue
+
+                    #edit postings
+                    if raw == "e":
+                        ok = fix_unbalanced_postings(data, postings)
+
+                        if not postings:
+                            print("No postings to edit.")
+                            continue
+
+                        if not ok:
+                            print("Edit cancelled.")
+                            continue
+                        print_postings(postings)
                         continue
 
                     #repeat last account
